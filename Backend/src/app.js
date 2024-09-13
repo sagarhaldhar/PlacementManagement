@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const studentRoute = require("./routes/student.route");
 
 const app = express();
 
@@ -25,4 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 // Set trust proxy if your app is behind a proxy (e.g., Nginx, Heroku)
 app.set('trust proxy', true);
 
+// Define routes
+app.use("/v1/student", studentRoute);
 module.exports = app;

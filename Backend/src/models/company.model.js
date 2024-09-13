@@ -23,15 +23,6 @@ const companySchema = new mongoose.Schema({
         trim : true,
         required : true,
     },
-    companyImages : [
-        {
-        type : String,
-    }
-    ],
-    dateOfDrive : {
-        type : Date,
-        default : "coming soon"
-    }
 })
 
 module.exports = mongoose.model('Company', companySchema, Company); // Company is the name of the collection
