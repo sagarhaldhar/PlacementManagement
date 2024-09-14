@@ -1,12 +1,9 @@
 const app = require("./app");
 const dotenv = require("dotenv");
+dotenv.config({ path: '../.env' });
 const DBconnect = require("./utils/dbConnect");
 
-// Load environment variables from a .env file
-dotenv.config({ path: '../.env' });
-
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 8100;
 const server = app.listen(PORT, () => {
     DBconnect();
     console.log(`Server is running on port ${PORT}`);
@@ -31,8 +28,11 @@ process.on("SIGTERM", () => {
 });
 
 // Handle SIGINT signal (sent when you manually interrupt the process)
-process.on("SIGINT", () => {
-    console.log("SIGINT received");
-    server.close(() => console.log("HTTP Server closed gracefully"));
-});
+process.on('SIGINT', () => {
+    console.log('Shutting down gracefully...');
+    server.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
 

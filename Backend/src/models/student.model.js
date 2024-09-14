@@ -17,7 +17,7 @@ const studentSchema = mongoose.Schema({
         required : true
     },
     phone : {
-        type : Number,
+        type : String,
         trim : true,
         required : true
     },
@@ -45,7 +45,6 @@ const studentSchema = mongoose.Schema({
     profilePic : {
         type : String,
         trim : true,
-        required : true
     },
     year : {
         type : Number,
@@ -54,7 +53,7 @@ const studentSchema = mongoose.Schema({
         required : true
     },
     batch : {
-        type : Number,
+        type : String,
         trim : true,
         required : true
     },
@@ -90,4 +89,6 @@ const studentSchema = mongoose.Schema({
 }
 );
 
-module.exports = mongoose.model("student",studentSchema, Student);
+const Student = mongoose.model('Student', studentSchema, 'students');
+
+module.exports = Student;
